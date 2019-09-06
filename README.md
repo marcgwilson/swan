@@ -17,14 +17,16 @@ docker-compose up -d    # run docker-compose file
 **password**: `asdf1234`  
 
 ## shell scripts
-`saveurl.sh` and `geturl.sh` use [`jq`](https://stedolan.github.io/jq/download/) for parsing **JSON** responses.  These can be run from inside the running Docker container.
+`saveurl.sh`, `geturl.sh`, and `getredirect.sh` use [`jq`](https://stedolan.github.io/jq/download/) for parsing **JSON** responses.  These can be run from inside the running Docker container.
 
 ```bash
 ./shell                                 # Connect to running docker container
 ./saveurl.sh https://www.google.ca      # Create shortened url
-> http://0.0.0.0:8000/vXnrww
+> http://0.0.0.0:8000/d5wm82
 ./geturl.sh https://www.google.ca       # Query shortened url
-> http://0.0.0.0:8000/vXnrww
+> http://0.0.0.0:8000/d5wm82
+./getredirect.sh d5wm82                 # Query redirect url
+> https://www.google.ca
 ```
 
 ## GraphQL Queries
@@ -32,6 +34,15 @@ docker-compose up -d    # run docker-compose file
 query {
   allUrls {
     id
+    url
+  }
+}
+
+query {
+  getHashId: url(url: "https://www.google.com") {
+    hashId
+  }
+  getUrl: url(hashId: "d5wm82") {
     url
   }
 }

@@ -27,12 +27,16 @@ class Query(object):
     def resolve_url(self, info, **kwargs):
         id = kwargs.get('id')
         url = kwargs.get('url')
+        hash_id = kwargs.get('hash_id')
 
         if id is not None:
             return URL.objects.get(pk=id)
 
         if url is not None:
             return URL.objects.get(url=url)
+
+        if hash_id is not None:
+            return URL.objects.get(hash_id=hash_id)
 
         return None
 

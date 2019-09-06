@@ -4,11 +4,11 @@ host="http://0.0.0.0:8000"
 
 set -e
 
-url=$1
+hash=$1
 
 data='query {
-	url(url: "'"$url"'") {
-  	hashId
+	getUrl: url(hashId: "'"$hash"'") {
+  	url
   }
 }'
 
@@ -18,6 +18,5 @@ data=$(curl -s \
   --data "$data" \
   $host/graphql)
 
-hashid=$(echo $data | jq -r '.data.url.hashId')
 
-echo "$host/$hashid"
+echo $data | jq -r '.data.getUrl.url'

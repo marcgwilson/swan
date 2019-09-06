@@ -17,17 +17,37 @@ class SchemaTestCase(GraphQLTestCase):
     def test_query(self):
         query = '''
         query {
-          getUrl: url(url: "https://apple.ca") {
+          getUrl: url(url: "%s") {
             url
             hashId
           }
         }
-        '''
+        ''' % (self.url_1.url)
         
         expected = {
           "getUrl": {
-            "url": "https://apple.ca",
+            "url": self.url_1.url,
             "hashId": self.url_1.hash
+          }
+        }
+
+        response = schema.execute(query)
+
+        self.assertIsNone(response.errors)
+        self.assertEqual(response.data, expected)
+
+    def test_hash_id_query(self):
+        query = '''
+        query {
+          getUrl: url(hashId: "%s") {
+            url
+          }
+        }
+        ''' % (self.url_1.hash)
+        
+        expected = {
+          "getUrl": {
+            "url": self.url_1.url,
           }
         }
 
