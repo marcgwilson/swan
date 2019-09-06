@@ -27,6 +27,8 @@ docker-compose up -d    # run docker-compose file
 > http://0.0.0.0:8000/d5wm82
 ./getredirect.sh d5wm82                 # Query redirect url
 > https://www.google.ca
+./saveurl.sh "https://arstechnica.com/tech-policy/2019/09/nyc-sues-t-mobile-to-stop-rampant-and-abusive-sales-tactics/"
+> http://0.0.0.0:8000/c2DJVC
 ```
 
 ## GraphQL Queries
