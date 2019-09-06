@@ -1,0 +1,38 @@
+[
+    {
+        "model": "url.url",
+        "pk": 1,
+        "fields": {
+            "url": "https://www.example.com",
+            "created_at": "2019-09-04T19:43:16.240Z",
+            "updated_at": "2019-09-04T19:43:16.240Z"
+        }
+    },
+    {
+        "model": "url.url",
+        "pk": 2,
+        "fields": {
+            "url": "https://www.google.com",
+            "created_at": "2019-09-04T19:43:16.240Z",
+            "updated_at": "2019-09-04T19:43:16.240Z"
+        }
+    },
+    {
+        "model": "url.url",
+        "pk": 3,
+        "fields": {
+            "url": "https://www.apple.ca",
+            "created_at": "2019-09-04T19:43:16.240Z",
+            "updated_at": "2019-09-04T19:43:16.240Z"
+        }
+    },
+    {
+        "model": "url.url",
+        "pk": 4,
+        "fields": {
+            "url": "https://www.k8s.io",
+            "created_at": "2019-09-04T19:43:16.240Z",
+            "updated_at": "2019-09-04T19:43:16.240Z"
+        }
+    }
+]

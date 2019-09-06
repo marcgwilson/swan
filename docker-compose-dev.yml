@@ -1,0 +1,9 @@
+version: '3'
+services:
+  swan:
+    image: swan/python3:latest
+    volumes:
+      - "./src:/root/src"
+    entrypoint: /bin/bash -c "tail -f /dev/null"
+    ports:
+      - 8000:8000

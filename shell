@@ -1,0 +1,30 @@
+#! /bin/bash
+
+function get_name() {
+	echo $(docker ps | tail -n +2| grep $1 | awk '{print $1 }')
+}
+
+function get_id() {
+  echo $(docker ps --filter "name=$1" -q)
+}
+
+function get_service_name() {
+  echo $(echo $1 | cut -d "_" -f 2)
+}
+
+fn=$(get_name swan)
+
+if [[ -z $fn ]]; then
+  echo "$1 not found"
+  exit 1
+fi
+
+id=$(get_id $fn)
+sn=$(get_service_name $fn)
+
+function get_shell() {
+  echo "Connecting to $2..."
+  docker exec -it $1 bash -c "export COLUMNS=`tput cols`; export LINES=`tput lines`; export SERVICE_NAME=$2; exec bash"
+}
+
+get_shell $id $sn
