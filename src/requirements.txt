@@ -1,4 +1,4 @@
-Django==2.2.5
+Django==2.2.8
 django-extensions==2.2.1
 graphene-django==2.5.0
 ptpython==2.0.4
